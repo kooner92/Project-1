@@ -5,7 +5,11 @@
 <head>
 
     <title>Google Maps Multiple Markers</title>
-    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyC2RY9GfCXAuDnDTuFAnBBNLkDjCQx6cM0" type="text/javascript"></script>
+
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2RY9GfCXAuDnDTuFAnBBNLkDjCQx6cM0&callback=initMap">
+    </script> -->
 </head>
 
 <body>
@@ -14,14 +18,14 @@
     </div>
     <script type="text/javascript">
         var locations = [
-            ['Bondi Beach', 34.118, -118.115, 4],
-            ['Coogee Beach', 34.445, -118.445, 5],
+            ['Pasadena', 34.118, -118.115],
+            ['Westwood', 34.445, -118.445],
 
         ];
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: new google.maps.LatLng(34, -118),
+            zoom: 9,
+            center: new google.maps.LatLng(34.288, -118.288),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
