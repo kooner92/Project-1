@@ -1,20 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meet Me Halfway</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+
+    <title>Google Maps Multiple Markers</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 </head>
 
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
+
+    <div id="map" style="height: 400px; width: 500px;">
+    </div>
+    <script type="text/javascript">
+        var locations = [
+            ['Bondi Beach', 34.118, -118.115, 4],
+            ['Coogee Beach', 34.445, -118.445, 5],
+
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: new google.maps.LatLng(34, -118),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
     
+                }
+            })(marker, i));
+        }
+    </script>
+</body>
+
+</html>
+
+<!--         
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2RY9GfCXAuDnDTuFAnBBNLkDjCQx6cM0&callback=initMap"
+            async defer>
+
+            </script> -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
