@@ -1,10 +1,4 @@
 $(document).ready(function () {
-    // var longitude = "&longitude=-122.42184275";
-    // var latitude = "&latitude=37.7670169511878";
-    // var term = "&term=";
-    // var categories = "&categories=";
-    // var sortBy = "&sort_by";
-    // var radius = "&radius=1609";
     $("form").on("submit", function (event) {
         event.preventDefault();
         var longitude = "";
@@ -43,26 +37,25 @@ $(document).ready(function () {
             location = "&location=" + $("#validationDefault07").val();
             console.log(location);
         }
-        webUrl = "http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del" + longitude + latitude + term + categories + sortBy + radius + location;
-        console.log(webUrl);
         $.ajax({
-
             url: "http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del" + longitude + latitude + location + term + categories + sortBy + radius,
             method: "GET",
             headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
         }).then(function (response) {
             console.log(response);
-
-            for (var i = 0; i < response.business.length; i++) {
-                var basePath = response.business[i]
-                var name;
-                var image;
-                var price;
-                var rating;
-                var url;
-                var phone;
-                var location;
+            var array = [];
+            for (var i = 0; i < 10; i++) {
+                var meetUp = {};
+                meetUp.placeName = response.businesses[i].name;
+                meetUp.placePrice = response.businesses[i].price;
+                meetUp.placeRating = response.businesses[i].rating;
+                meetUp.placeImage = response.businesses[i].image_url;
+                meetUp.placeUrl = response.businesses[i].url;
+                meetUp.placePhone = response.businesses[i].phone;
+                meetUp.placeLocation = response.businesses[i].location.display_address;
+                array.push(meetUp);
             }
+            console.log(array);
         });
     });
 });
