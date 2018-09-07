@@ -5,111 +5,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/materialize.css" media="screen,projection">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     <title>Meet Me Halfway</title>
 </head>
 
 <body>
+
+    <nav class="teal lighten-2 container">
+        <div class="nav-wrapper">
+            <a id="logo-container" href="#" class="brand-logo">Meet Me Halfway</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-
         <div class="row">
-            <div class="col-sm-12">
-                <h1>Meet Me Halfway</h1>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <form>
-                    <div class="form-group">
-                        <label for="Address1">1st Address</label>
-                        <input type="text" class="form-control" id="address1" placeholder="123 Sesame St">
+            <form class="col s12 teal lighten-5">
+                <div class="row">
+                    <br>
+                    <div class="input-field col s6">
+                        <input placeholder="42 Wallaby Way" id="address1" type="text" class="validate">
+                        <label for="address1">1st Location</label>
                     </div>
-                    <div class="form-group">
-                        <label for="Address2">2nd Address</label>
-                        <input type="text" class="form-control" id="address2" placeholder="42 Wallaby Way">
+                    <div class="input-field col s6">
+                        <input placeholder="123 Sesame Street" id="address2" type="text" class="validate">
+                        <label for="address2">2nd Location</label>
                     </div>
-                    <div class="form-group">
-                        <label for="term">Search</label>
-                        <input type="text" class="form-control" id="term" placeholder="Search">
-                    </div>
-                    <div class="form-group">
-                        <label for="categories">Categories:</label>
-                        <select class="form-control" id="categories">
-                            <option></option>
-                            <option>gyms</option>
-                            <option>restaurants</option>
-                            <option>parks</option>
-                            <option>cafe</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price:</label>
-                        <select class="form-control" id="price">
-                            <option></option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sortBy">Sort by:</label>
-                        <select class="form-control" id="sortBy">
-                            <option></option>
-                            <option>best_match</option>
-                            <option>rating</option>
-                            <option>review_count</option>
-                            <option>distance</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="radius">Radius in miles:</label>
-                        <select class="form-control" id="radius">
-                            <option></option>
-                            <option>1609</option>
-                            <option>3218</option>
-                            <option>4827</option>
-                            <option>6436</option>
-                            <option>8045</option>
-                        </select>
-                    </div>
-                    <input id="search" class="btn btn-outline-info" type="submit" value="Search">
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div id="map-container">
-                    <h3>Map Stuff</h3>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quod
-                    inventore fuga error consectetur eius cum quos, labore, repellendus placeat facilis. Voluptate ea
-                    dignissimos ut facere, perspiciatis similique quo ullam.
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div id="yelp-results">
-                    <h3>Yelp Stuff</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius harum saepe, illo
-                    ipsa laborum maiores soluta minima neque eos, reiciendis natus, voluptas cum? Error dolor atque
-                    aliquam
-                    cum sapiente saepe.
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="term" type="text" class="validate">
+                        <label for="POI">Point of Interest</label>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col s3">
+                        <p>Price</p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="price" id="price" value="1" type="radio" checked />
+                                <span>$</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="price" id="price" value="2" type="radio" />
+                                <span>$$</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="price" id="price" value="3" type="radio" />
+                                <span>$$$</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="price" id="price" value="4" type="radio" />
+                                <span>$$$$</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>Radius</p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="radius" id="radius" value="805" type="radio" checked />
+                                <span>0.5 miles</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="radius" id="radius" value="1609" type="radio" />
+                                <span>1 mile</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="radius" id="radius" value="4828" type="radio" />
+                                <span>3 miles</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="radius" id="radius" value="8047" type="radio" />
+                                <span>5 miles</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>Sort by</p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="sortBy" id="sortBy" value="bestPrice" type="radio"
+                                    checked />
+                                <span>Best Price</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="sortBy" id="sortBy" value="shortestDistance" type="radio" />
+                                <span>Shortest Distance</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="sortBy" id="sortBy" value="fastestTravel" type="radio" />
+                                <span>Fastest Travel</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="sortBy" id="sortBy" value="highestRating" type="radio" />
+                                <span>Highest Rating</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <p>Advanced Search</p>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Open now</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Hot & new</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Reservations</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Deals</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">Search</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <h3>Map Stuff</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, assumenda est dolorem aspernatur
+                    distinctio dolor accusamus facilis aliquam at tempora quisquam cupiditate! Aut voluptate eum sit ab
+                    ut nulla cupiditate!
+                </p>
+            </div>
+            <div class="col s6">
+                <h3>Yelp Stuff</h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt inventore dolore deserunt cum
+                    non nulla eveniet atque voluptatum delectus quasi repellat quisquam recusandae, reiciendis fugit
+                    sunt laborum nihil iure minima?
+                </p>
             </div>
         </div>
-
     </div>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="assets/javascript/materialize.js"></script>
     <script src="assets/javascript/mapstesting.js"></script>
-
 
 </body>
 
