@@ -5,16 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meet Me Halfway</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <title>Meet Me Halfway</title>
 </head>
 
 <body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Meet Me Halfway</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <form>
+                    <div class="form-group">
+                        <label for="Address1">1st Address</label>
+                        <input type="text" class="form-control" id="address1" placeholder="123 Sesame St">
+                    </div>
+                    <div class="form-group">
+                        <label for="Address2">2nd Address</label>
+                        <input type="text" class="form-control" id="address2" placeholder="42 Wallaby Way">
+                    </div>
+                    <div class="form-group">
+                        <label for="sort-form-control">Sort by:</label>
+                        <select class="form-control" id="sortBy">
+                            <option>Best Match</option>
+                            <option>Rating</option>
+                            <option>Review Count</option>
+                            <option>Distance</option>
+                        </select>
+                    </div>
+                    <input id="search" class="btn btn-outline-info" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="map-container">
+                    <h3>Map Stuff</h3>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quod
+                    inventore fuga error consectetur eius cum quos, labore, repellendus placeat facilis. Voluptate ea
+                    dignissimos ut facere, perspiciatis similique quo ullam.
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="yelp-results">
+                    <h3>Yelp Stuff</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius harum saepe, illo
+                    ipsa laborum maiores soluta minima neque eos, reiciendis natus, voluptas cum? Error dolor atque
+                    aliquam
+                    cum sapiente saepe.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js"></script>
-    
+
 </body>
 
 </html>
