@@ -38,7 +38,6 @@ $("form").on("submit", function(event) {
         var price = "";
         var sortBy = "";
         var radius = "";
-        var location = "";
        
         if ($("#term").val() !== "") {
             term = "&term=" + $("#term").val();
