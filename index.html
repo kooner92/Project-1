@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <div class="container">
 
         <div class="row">
@@ -33,12 +32,48 @@
                         <input type="text" class="form-control" id="address2" placeholder="42 Wallaby Way">
                     </div>
                     <div class="form-group">
-                        <label for="sort-form-control">Sort by:</label>
+                        <label for="term">Search</label>
+                        <input type="text" class="form-control" id="term" placeholder="Search">
+                    </div>
+                    <div class="form-group">
+                        <label for="categories">Categories:</label>
+                        <select class="form-control" id="categories">
+                            <option></option>
+                            <option>gyms</option>
+                            <option>restaurants</option>
+                            <option>parks</option>
+                            <option>cafe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <select class="form-control" id="price">
+                            <option></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sortBy">Sort by:</label>
                         <select class="form-control" id="sortBy">
-                            <option>Best Match</option>
-                            <option>Rating</option>
-                            <option>Review Count</option>
-                            <option>Distance</option>
+                            <option></option>
+                            <option>best_match</option>
+                            <option>rating</option>
+                            <option>review_count</option>
+                            <option>distance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="radius">Radius in miles:</label>
+                        <select class="form-control" id="radius">
+                            <option></option>
+                            <option>1609</option>
+                            <option>3218</option>
+                            <option>4827</option>
+                            <option>6436</option>
+                            <option>8045</option>
                         </select>
                     </div>
                     <input id="search" class="btn btn-outline-info" type="submit" value="Search">
@@ -67,12 +102,15 @@
 
     </div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/yelpFeature1.js"></script>
+
 
 </body>
 

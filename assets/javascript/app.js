@@ -13,7 +13,5 @@ function displaySearch() {
         console.log(results);
     });
 }
-
 displaySearch();
-
 });
