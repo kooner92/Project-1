@@ -48,25 +48,25 @@
                         <p>Price</p>
                         <p>
                             <label>
-                                <input class="with-gap" name="price" id="price" value="1" type="radio" checked />
+                                <input class="with-gap" name="price" value="&price=1" type="radio" checked />
                                 <span>$</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="price" id="price" value="2" type="radio" />
+                                <input class="with-gap" name="price" value="&price=2" type="radio" />
                                 <span>$$</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="price" id="price" value="3" type="radio" />
+                                <input class="with-gap" name="price" value="&price=3" type="radio" />
                                 <span>$$$</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="price" id="price" value="4" type="radio" />
+                                <input class="with-gap" name="price" value="&price=4" type="radio" />
                                 <span>$$$$</span>
                             </label>
                         </p>
@@ -75,26 +75,26 @@
                         <p>Radius</p>
                         <p>
                             <label>
-                                <input class="with-gap" name="radius" id="radius" value="805" type="radio" checked />
+                                <input class="with-gap" name="radius" value="&radius=805" type="radio" checked />
                                 <span>0.5 miles</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="radius" id="radius" value="1609" type="radio" />
-                                <span>1 mile</span>
+                                <input class="with-gap" name="radius" value="&radius=3219" type="radio" />
+                                <span>2 mile</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="radius" id="radius" value="4828" type="radio" />
-                                <span>3 miles</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input class="with-gap" name="radius" id="radius" value="8047" type="radio" />
+                                <input class="with-gap" name="radius" value="&radius=8047" type="radio" />
                                 <span>5 miles</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="radius" value="&radius=16093" type="radio" />
+                                <span>10 miles</span>
                             </label>
                         </p>
                     </div>
@@ -102,27 +102,21 @@
                         <p>Sort by</p>
                         <p>
                             <label>
-                                <input class="with-gap" name="sortBy" id="sortBy" value="bestPrice" type="radio"
+                                <input class="with-gap" name="sortBy" value="&sortBy=best_match" type="radio"
                                     checked />
-                                <span>Best Price</span>
+                                <span>Best Match</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="sortBy" id="sortBy" value="shortestDistance" type="radio" />
-                                <span>Shortest Distance</span>
+                                <input class="with-gap" name="sortBy" value="&sortBy=rating" type="radio" />
+                                <span>Rating</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="sortBy" id="sortBy" value="fastestTravel" type="radio" />
-                                <span>Fastest Travel</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input class="with-gap" name="sortBy" id="sortBy" value="highestRating" type="radio" />
-                                <span>Highest Rating</span>
+                                <input class="with-gap" name="sortBy" value="&sortBy=review_count" type="radio" />
+                                <span>Review Count</span>
                             </label>
                         </p>
                     </div>
@@ -130,25 +124,25 @@
                         <p>Advanced Search</p>
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" />
+                                <input type="checkbox" class="filled-in" id="openNow" value="&open_now=true"/>
                                 <span>Open now</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" />
+                                <input type="checkbox" class="filled-in" id="hotNew" value="hot_and_new"/>
                                 <span>Hot & new</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" />
-                                <span>Reservations</span>
+                                <input type="checkbox" class="filled-in" id="reservation" value="reservation"/>
+                                <span>Accepts reservations</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" />
+                                <input type="checkbox" class="filled-in" id="deals" value="deals"/>
                                 <span>Deals</span>
                             </label>
                         </p>
