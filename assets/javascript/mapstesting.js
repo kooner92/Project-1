@@ -1,7 +1,8 @@
 $(document).ready(function () {
-
+    
     $("form").on("submit", function (event) {
-
+        
+        $(".modal").modal();
         event.preventDefault();
         var address1 = $("#address1").val();
         var address2 = $("#address2").val();
@@ -49,6 +50,7 @@ $(document).ready(function () {
                 method: "GET",
                 headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
             }).then(function (response) {
+                console.log(response);
                 if (response.businesses.length === 0) {
                     alert("no businesses in this search area");
                 }
