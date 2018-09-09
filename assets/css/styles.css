@@ -9,7 +9,7 @@ h1, h3 {
 }
 .nav-wrapper {
     margin-top: 20px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Bree Serif', serif;
 }
 .container {
     margin-top: 10px;
@@ -17,3 +17,7 @@ h1, h3 {
 #logo-container {
     margin-left: 30px;
 }
+#map {
+    height: 400px;  
+    width: 100%;  
+   }

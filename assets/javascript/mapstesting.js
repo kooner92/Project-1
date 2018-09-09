@@ -1,15 +1,14 @@
 $(document).ready(function () {
-    
     $("form").on("submit", function (event) {
-        
-        $(".modal").modal();
         event.preventDefault();
+
         var address1 = $("#address1").val();
         var address2 = $("#address2").val();
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
         var proxy = "http://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
         console.log(queryURL);
+        
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -26,30 +25,33 @@ $(document).ready(function () {
             var sortBy = $("input[name='sortBy']:checked").val();
             var open = "";
             var yelpAttributes = [];
-            var advanceSearch = ""; 
+            var advanceSearch = "";
+
             if ($("#term").val() !== "") {
                 term = "&term=" + $("#term").val();
             }
             if ($("input[id='openNow']:checked").val() !== undefined) {
                 open = $("input[id='openNow']:checked").val();
             }
-            if ($("input[id='hotNew']:checked").val() !== undefined){
+            if ($("input[id='hotNew']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='hotNew']:checked").val());
             }
-            if ($("input[id='reservation']:checked").val() !== undefined){
+            if ($("input[id='reservation']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='reservation']:checked").val());
             }
-            if ($("input[id='deals']:checked").val() !== undefined){
+            if ($("input[id='deals']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='deals']:checked").val());
             }
-            if (yelpAttributes !== undefined){
+            if (yelpAttributes !== undefined) {
                 advanceSearch = "&attributes=" + yelpAttributes.toString();
             }
+
             $.ajax({
                 url: `http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
                 method: "GET",
                 headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
             }).then(function (response) {
+
                 console.log(response);
                 if (response.businesses.length === 0) {
                     alert("no businesses in this search area");
@@ -68,6 +70,31 @@ $(document).ready(function () {
                         array.push(meetUp);
                     }
                 }
+                
+                function initMap() {
+                    var pointMid = {};
+                    pointMid.lat = (latitude1 + latitude2) / 2;
+                    pointMid.lng = (longitude1 + longitude2) / 2;
+                    var pointA = {};
+                    pointA.lat = latitude1;
+                    pointA.lng = longitude1;
+                    var pointB = {};
+                    pointB.lat = latitude2;
+                    pointB.lng = longitude2;
+                    var image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 4, center: pointMid });
+                    var markerMid = new google.maps.Marker({ position: pointMid, map: map, icon: image, title: "Mid Point" });
+                    var markerA = new google.maps.Marker({ position: pointA, map: map, title: "1st Location" });
+                    var markerB = new google.maps.Marker({ position: pointB, map: map, title: "2nd location" });
+                    var markers = [markerMid, markerA, markerB];
+                    var bounds = new google.maps.LatLngBounds();
+                    for (var i = 0; i < markers.length; i++) {
+                        bounds.extend(markers[i].getPosition());
+                    }
+                    map.fitBounds(bounds);
+                }
+                initMap();
             });
         });
     });
