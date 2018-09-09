@@ -8,7 +8,7 @@ $(document).ready(function () {
         var proxy = "http://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
         console.log(queryURL);
-        
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -70,7 +70,9 @@ $(document).ready(function () {
                         array.push(meetUp);
                     }
                 }
-                
+
+
+
                 function initMap() {
                     var pointMid = {};
                     pointMid.lat = (latitude1 + latitude2) / 2;
@@ -93,6 +95,35 @@ $(document).ready(function () {
                         bounds.extend(markers[i].getPosition());
                     }
                     map.fitBounds(bounds);
+
+                    for (var i = 0; i < 5; i++) {
+                        var yelpLong = response.businesses[i].coordinates.longitude;
+                        var yelpLat = response.businesses[i].coordinates.latitude;
+                        var pointY = {};
+                        pointY.lat = yelpLat;
+                        pointY.lng = yelpLong;
+                        console.log(pointY);                        
+                        var yelpMarker = new google.maps.Marker({
+                            position: pointY, map: map, title: response.businesses[i].name, icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 5
+                            }
+                        });
+                        var contentString = '<div id="content">' +
+                            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                            '<div id="bodyContent">' + '<p><b>Uluru</b></p>' +
+                            '</div>' +
+                            '</div>';
+                            
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        yelpMarker.addListener('click', function () {
+                            infowindow.open(map, yelpMarker);
+                        });
+                    }
+
+
                 }
                 initMap();
             });
