@@ -51,7 +51,7 @@ $(document).ready(function () {
             }
 
             $.ajax({
-                url: `http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
+                url: `http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del&limit=5${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
                 method: "GET",
                 headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
             }).then(function (response) {
@@ -73,7 +73,7 @@ $(document).ready(function () {
                         meetUp.placeLocation = response.businesses[i].location.display_address;
                         array.push(meetUp);
                     }
-                    for (i = 0; i < 5; i++) {
+                    for (i = 0; i < response.businesses.length; i++) {
                         var resultNumber = i + 1;
                         var name = array[i].placeName;
                         var price = array[i].placePrice;
@@ -132,7 +132,7 @@ $(document).ready(function () {
                     }
                     map.fitBounds(bounds);
                     var places = [];
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < response.businesses.length; i++) {
                         places[i] = {};
                         places[i].yelpLong = response.businesses[i].coordinates.longitude;
                         places[i].yelpLat = response.businesses[i].coordinates.latitude;
