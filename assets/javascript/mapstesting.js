@@ -1,7 +1,8 @@
 $(document).ready(function () {
-    
+
     $("form").on("submit", function (event) {
-        
+
+        $("#yelp-results").empty();
         $(".modal").modal();
         event.preventDefault();
         var address1 = $("#address1").val();
@@ -26,23 +27,23 @@ $(document).ready(function () {
             var sortBy = $("input[name='sortBy']:checked").val();
             var open = "";
             var yelpAttributes = [];
-            var advanceSearch = ""; 
+            var advanceSearch = "";
             if ($("#term").val() !== "") {
                 term = "&term=" + $("#term").val();
             }
             if ($("input[id='openNow']:checked").val() !== undefined) {
                 open = $("input[id='openNow']:checked").val();
             }
-            if ($("input[id='hotNew']:checked").val() !== undefined){
+            if ($("input[id='hotNew']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='hotNew']:checked").val());
             }
-            if ($("input[id='reservation']:checked").val() !== undefined){
+            if ($("input[id='reservation']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='reservation']:checked").val());
             }
-            if ($("input[id='deals']:checked").val() !== undefined){
+            if ($("input[id='deals']:checked").val() !== undefined) {
                 yelpAttributes.push($("input[id='deals']:checked").val());
             }
-            if (yelpAttributes !== undefined){
+            if (yelpAttributes !== undefined) {
                 advanceSearch = "&attributes=" + yelpAttributes.toString();
             }
             $.ajax({
@@ -67,7 +68,41 @@ $(document).ready(function () {
                         meetUp.placeLocation = response.businesses[i].location.display_address;
                         array.push(meetUp);
                     }
-                }
+                    console.log(array);
+                    for (i = 0; i < 5; i++) {
+                        var resultNumber = i + 1;
+                        var name = array[i].placeName;
+                        var price = array[i].placePrice;
+                        var rating = array[i].placeRating;
+                        var image = array[i].placeImage;
+                        var link = array[i].placeUrl;
+                        var phone = array[i].placePhone;
+                        var location = array[i].placeLocation;
+
+                        var resultDiv = $("<div>");
+                        resultDiv.attr("id", "result" + resultNumber);
+                        var resultHeader = $("<div>");
+                        resultHeader.addClass("row");
+                        var resultTitle = $("<div>");
+                        resultTitle.addClass("col s12");
+                        var resultContent = $("<div>");
+                        resultContent.addClass("row");
+                        var resultImage = $("<div>");
+                        resultImage.addClass("col s6").attr("id", "imageColumn");
+                        var resultText = $("<div>");
+                        resultText.addClass("col s6");
+
+                        resultTitle.append(resultNumber).append($("<a>").attr("href", link).text(") " + name));
+                        resultHeader.append(resultTitle);
+
+                        resultImage.append($("<img>").attr("src", image).attr("alt", name).attr("id", "resultImage"));
+                        resultText.append(location + "<br> Contact: " + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
+                        resultContent.append(resultImage, resultText);
+
+                        resultDiv.append(resultHeader, resultContent);
+                        $("#yelp-results").append(resultDiv);
+                    };
+                };
             });
         });
     });
