@@ -65,12 +65,11 @@ $(document).ready(function () {
                         meetUp.placeRating = response.businesses[i].rating;
                         meetUp.placeImage = response.businesses[i].image_url;
                         meetUp.placeUrl = response.businesses[i].url;
-                        meetUp.placePhone = response.businesses[i].phone;
+                        meetUp.placePhone = response.businesses[i].display_phone;
                         meetUp.placeLocation = response.businesses[i].location.display_address;
                         array.push(meetUp);
                     }
                 }
-
 
 
                 function initMap() {
@@ -110,8 +109,8 @@ $(document).ready(function () {
                             }
                         });
                         places[i].contentString = '<div id="content">' +
-                            '<h4 id="firstHeading" class="firstHeading">Uluru</h4>' +
-                            '<div id="bodyContent">' + '<p><b>'+ response.businesses[i].name + '</b></p>' +
+                            '<id="firstHeading" class="firstHeading">'+ '<h6><b>' + response.businesses[i].name + '</b></h6>' +
+                            '<div id="bodyContent">' + '<p>'+ response.businesses[i].location.display_address + '</p>' + '<p>' + response.businesses[i].display_phone + '</p>'
                             '</div>' +
                             '</div>';
 
