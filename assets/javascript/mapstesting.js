@@ -9,7 +9,7 @@ $(document).ready(function () {
         var address1 = $("#address1").val();
         var address2 = $("#address2").val();
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
-        var proxy = "http://cors-anywhere.herokuapp.com/";
+        var proxy = "https://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
         console.log(queryURL);
 
