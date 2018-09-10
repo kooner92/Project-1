@@ -102,7 +102,7 @@ $(document).ready(function () {
                         var pointY = {};
                         pointY.lat = yelpLat;
                         pointY.lng = yelpLong;
-                        console.log(pointY);                        
+                        console.log(pointY);
                         var yelpMarker = new google.maps.Marker({
                             position: pointY, map: map, title: response.businesses[i].name, icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
@@ -118,10 +118,12 @@ $(document).ready(function () {
                         var infowindow = new google.maps.InfoWindow({
                             content: contentString
                         });
-                        yelpMarker.addListener('click', function () {
+                        google.maps.event.addListener(yelpMarker, 'click', function () {
                             infowindow.open(map, yelpMarker);
                         });
+                        
                     }
+
 
 
                 }
