@@ -51,7 +51,7 @@ $(document).ready(function () {
             }
 
             $.ajax({
-                url: `http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
+                url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
                 method: "GET",
                 headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
             }).then(function (response) {
