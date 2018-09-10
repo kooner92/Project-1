@@ -83,29 +83,34 @@ $(document).ready(function () {
                         var phone = array[i].placePhone;
                         var location = array[i].placeLocation;
 
+                        var carouselItem = $("<div>");
+                        carouselItem.addClass("carousel-item");
                         var resultDiv = $("<div>");
-                        resultDiv.attr("id", "result" + resultNumber);
-                        var resultHeader = $("<div>");
-                        resultHeader.addClass("row");
-                        var resultTitle = $("<div>");
-                        resultTitle.addClass("col s12");
+                        resultDiv.attr("id", "result" + resultNumber).addClass("card result");
+                        var imageDiv = $("<div>");
+                        imageDiv.addClass("card-image");
+                        var resultImage = $("<img>");
+                        resultImage.attr("src", image).attr("alt", name);
+                        var resultName = $("<span>");
+                        resultName.addClass("card-title").text(name);
                         var resultContent = $("<div>");
-                        resultContent.addClass("row");
-                        var resultImage = $("<div>");
-                        resultImage.addClass("col s6").attr("id", "imageColumn");
-                        var resultText = $("<div>");
-                        resultText.addClass("col s6");
+                        resultContent.addClass("card-content");
+                        var resultAction = $("<div>");
+                        resultAction.addClass("card-action");
+                        var resultLink = $("<a>");
+                        resultLink.attr("href", link).text("link");
+                        var header = $("<h6>");
 
-                        resultTitle.append(resultNumber).append($("<a>").attr("href", link).text(") " + name));
-                        resultHeader.append(resultTitle);
+                        resultAction.append(resultLink);
+                        resultContent.append(location + "<br>" + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
+                        header.append(resultName);
+                        imageDiv.append(resultImage, header);
+                        resultDiv.append(imageDiv, resultContent, resultAction);
+                        carouselItem.append(resultDiv);
 
-                        resultImage.append($("<img>").attr("src", image).attr("alt", name).attr("id", "resultImage"));
-                        resultText.append(location + "<br> Contact: " + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
-                        resultContent.append(resultImage, resultText);
-
-                        resultDiv.append(resultHeader, resultContent);
-                        $("#yelp-results").append(resultDiv);
+                        $(".carousel").append(carouselItem);
                     };
+                    $('.carousel').carousel();
                 }
 
 
