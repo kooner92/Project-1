@@ -109,22 +109,27 @@ $(document).ready(function () {
                                 scale: 5
                             }
                         });
-                        var contentString = '<div id="content">' +
-                            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                            '<div id="bodyContent">' + '<p><b>Uluru</b></p>' +
+                        places[i].contentString = '<div id="content">' +
+                            '<h4 id="firstHeading" class="firstHeading">Uluru</h4>' +
+                            '<div id="bodyContent">' + '<p><b>'+ response.businesses[i].name + '</b></p>' +
                             '</div>' +
                             '</div>';
 
-                        var infowindow = new google.maps.InfoWindow({
-                            content: contentString
+                        places[i].infowindow = new google.maps.InfoWindow({
+                            content: places[i].contentString
                         });
-
                     }
                     places.forEach(place => {
                         google.maps.event.addListener(place.yelpMarker, 'click', function () {
-                            infowindow.open(map, place.yelpMarker);
+                            place.infowindow.open(map, this);
+                            places.forEach(place => {
+                                if (place.yelpMarker !== this){
+                                    place.infowindow.close();
+                                }
+                            })
                         });
                     })
+                    
                 }
                 initMap();
             });
