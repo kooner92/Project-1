@@ -1,5 +1,9 @@
 $(document).ready(function () {
+
     $("form").on("submit", function (event) {
+
+        $("#yelp-results").empty();
+        $(".modal").modal();
         event.preventDefault();
 
         var address1 = $("#address1").val();
@@ -69,6 +73,39 @@ $(document).ready(function () {
                         meetUp.placeLocation = response.businesses[i].location.display_address;
                         array.push(meetUp);
                     }
+                    for (i = 0; i < 5; i++) {
+                        var resultNumber = i + 1;
+                        var name = array[i].placeName;
+                        var price = array[i].placePrice;
+                        var rating = array[i].placeRating;
+                        var image = array[i].placeImage;
+                        var link = array[i].placeUrl;
+                        var phone = array[i].placePhone;
+                        var location = array[i].placeLocation;
+
+                        var resultDiv = $("<div>");
+                        resultDiv.attr("id", "result" + resultNumber);
+                        var resultHeader = $("<div>");
+                        resultHeader.addClass("row");
+                        var resultTitle = $("<div>");
+                        resultTitle.addClass("col s12");
+                        var resultContent = $("<div>");
+                        resultContent.addClass("row");
+                        var resultImage = $("<div>");
+                        resultImage.addClass("col s6").attr("id", "imageColumn");
+                        var resultText = $("<div>");
+                        resultText.addClass("col s6");
+
+                        resultTitle.append(resultNumber).append($("<a>").attr("href", link).text(") " + name));
+                        resultHeader.append(resultTitle);
+
+                        resultImage.append($("<img>").attr("src", image).attr("alt", name).attr("id", "resultImage"));
+                        resultText.append(location + "<br> Contact: " + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
+                        resultContent.append(resultImage, resultText);
+
+                        resultDiv.append(resultHeader, resultContent);
+                        $("#yelp-results").append(resultDiv);
+                    };
                 }
 
 
