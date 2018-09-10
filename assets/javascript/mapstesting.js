@@ -9,10 +9,10 @@ $(document).ready(function () {
         var address1 = $("#address1").val();
         var address2 = $("#address2").val();
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
-        var proxy = "http://cors-anywhere.herokuapp.com/";
+        var proxy = "https://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
         console.log(queryURL);
-        
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -51,7 +51,7 @@ $(document).ready(function () {
             }
 
             $.ajax({
-                url: `http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
+                url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=del&limit=5${midLongitude}${midLatitude}${term}${price}${radius}${sortBy}${open}${advanceSearch}`,
                 method: "GET",
                 headers: { "Authorization": "Bearer 0xtZshssd9WzNzqiXrck1pdz-jC9mbOOkdDQL6xxKj9g78FU9wRHpXKxGLLSNAVo2jR-0bcLCaUn9x9yj8zGbBVY2zUM6wnl6-rWjmAo2mdtG_LSaF-uS7dDPLaQW3Yx" }
             }).then(function (response) {
@@ -69,11 +69,11 @@ $(document).ready(function () {
                         meetUp.placeRating = response.businesses[i].rating;
                         meetUp.placeImage = response.businesses[i].image_url;
                         meetUp.placeUrl = response.businesses[i].url;
-                        meetUp.placePhone = response.businesses[i].phone;
+                        meetUp.placePhone = response.businesses[i].display_phone;
                         meetUp.placeLocation = response.businesses[i].location.display_address;
                         array.push(meetUp);
                     }
-                    for (i = 0; i < 5; i++) {
+                    for (i = 0; i < response.businesses.length; i++) {
                         var resultNumber = i + 1;
                         var name = array[i].placeName;
                         var price = array[i].placePrice;
@@ -83,31 +83,37 @@ $(document).ready(function () {
                         var phone = array[i].placePhone;
                         var location = array[i].placeLocation;
 
+                        var carouselItem = $("<div>");
+                        carouselItem.addClass("carousel-item");
                         var resultDiv = $("<div>");
-                        resultDiv.attr("id", "result" + resultNumber);
-                        var resultHeader = $("<div>");
-                        resultHeader.addClass("row");
-                        var resultTitle = $("<div>");
-                        resultTitle.addClass("col s12");
+                        resultDiv.attr("id", "result" + resultNumber).addClass("card result");
+                        var imageDiv = $("<div>");
+                        imageDiv.addClass("card-image");
+                        var resultImage = $("<img>");
+                        resultImage.attr("src", image).attr("alt", name);
+                        var resultName = $("<span>");
+                        resultName.addClass("card-title").text(name);
                         var resultContent = $("<div>");
-                        resultContent.addClass("row");
-                        var resultImage = $("<div>");
-                        resultImage.addClass("col s6").attr("id", "imageColumn");
-                        var resultText = $("<div>");
-                        resultText.addClass("col s6");
+                        resultContent.addClass("card-content");
+                        var resultAction = $("<div>");
+                        resultAction.addClass("card-action");
+                        var resultLink = $("<a>");
+                        resultLink.attr("href", link).text("link");
+                        var header = $("<h6>");
 
-                        resultTitle.append(resultNumber).append($("<a>").attr("href", link).text(") " + name));
-                        resultHeader.append(resultTitle);
+                        resultAction.append(resultLink);
+                        resultContent.append(location + "<br>" + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
+                        header.append(resultName);
+                        imageDiv.append(resultImage, header);
+                        resultDiv.append(imageDiv, resultContent, resultAction);
+                        carouselItem.append(resultDiv);
 
-                        resultImage.append($("<img>").attr("src", image).attr("alt", name).attr("id", "resultImage"));
-                        resultText.append(location + "<br> Contact: " + phone + "<br> Price: " + price + "<br> Rating: " + rating + "/5");
-                        resultContent.append(resultImage, resultText);
-
-                        resultDiv.append(resultHeader, resultContent);
-                        $("#yelp-results").append(resultDiv);
+                        $(".carousel").append(carouselItem);
                     };
+                    $('.carousel').carousel();
                 }
-                
+
+
                 function initMap() {
                     var pointMid = {};
                     pointMid.lat = (latitude1 + latitude2) / 2;
@@ -130,6 +136,41 @@ $(document).ready(function () {
                         bounds.extend(markers[i].getPosition());
                     }
                     map.fitBounds(bounds);
+                    var places = [];
+                    for (var i = 0; i < response.businesses.length; i++) {
+                        places[i] = {};
+                        places[i].yelpLong = response.businesses[i].coordinates.longitude;
+                        places[i].yelpLat = response.businesses[i].coordinates.latitude;
+                        places[i].pointY = {};
+                        places[i].pointY.lat = places[i].yelpLat;
+                        places[i].pointY.lng = places[i].yelpLong;
+                        places[i].yelpMarker = new google.maps.Marker({
+                            position: places[i].pointY, map: map, title: response.businesses[i].name, icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 5
+                            }
+                        });
+                        places[i].contentString = '<div id="content">' +
+                            '<id="firstHeading" class="firstHeading">'+ '<h6><b>' + response.businesses[i].name + '</b></h6>' +
+                            '<div id="bodyContent">' + '<p>'+ response.businesses[i].location.display_address + '</p>' + '<p>' + response.businesses[i].display_phone + '</p>'
+                            '</div>' +
+                            '</div>';
+
+                        places[i].infowindow = new google.maps.InfoWindow({
+                            content: places[i].contentString
+                        });
+                    }
+                    places.forEach(place => {
+                        google.maps.event.addListener(place.yelpMarker, 'click', function () {
+                            place.infowindow.open(map, this);
+                            places.forEach(place => {
+                                if (place.yelpMarker !== this){
+                                    place.infowindow.close();
+                                }
+                            })
+                        });
+                    })
+                    
                 }
                 initMap();
             });
