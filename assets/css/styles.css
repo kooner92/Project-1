@@ -4,8 +4,18 @@ body {
     background-size: cover;
     opacity: .9;
 }
+div.carousel-item.active {
+    transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
+}
+div.carousel-item {
+    transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
+}
 h1 {
     text-align: center;
+}
+h6 span {
+    background-color: black;
+    color: white;
 }
 .nav-wrapper {
     margin-top: 20px;
@@ -20,11 +30,9 @@ h1 {
 #map {
     height: 400px;  
     width: 100%;  
-}
-#yelp-results, a {
-    color: white;
+    margin-top: 8px;
 }
 #resultImage {
     max-width: 100%;
-    max-height: 100%;
+    max-height: auto;
 }
