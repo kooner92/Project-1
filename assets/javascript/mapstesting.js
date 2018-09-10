@@ -95,16 +95,16 @@ $(document).ready(function () {
                         bounds.extend(markers[i].getPosition());
                     }
                     map.fitBounds(bounds);
-
+                    var places = [];
                     for (var i = 0; i < 5; i++) {
-                        var yelpLong = response.businesses[i].coordinates.longitude;
-                        var yelpLat = response.businesses[i].coordinates.latitude;
-                        var pointY = {};
-                        pointY.lat = yelpLat;
-                        pointY.lng = yelpLong;
-                        console.log(pointY);
-                        var yelpMarker = new google.maps.Marker({
-                            position: pointY, map: map, title: response.businesses[i].name, icon: {
+                        places[i] = {};
+                        places[i].yelpLong = response.businesses[i].coordinates.longitude;
+                        places[i].yelpLat = response.businesses[i].coordinates.latitude;
+                        places[i].pointY = {};
+                        places[i].pointY.lat = places[i].yelpLat;
+                        places[i].pointY.lng = places[i].yelpLong;
+                        places[i].yelpMarker = new google.maps.Marker({
+                            position: places[i].pointY, map: map, title: response.businesses[i].name, icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
                                 scale: 5
                             }
@@ -114,18 +114,17 @@ $(document).ready(function () {
                             '<div id="bodyContent">' + '<p><b>Uluru</b></p>' +
                             '</div>' +
                             '</div>';
-                            
+
                         var infowindow = new google.maps.InfoWindow({
                             content: contentString
                         });
-                        google.maps.event.addListener(yelpMarker, 'click', function () {
-                            infowindow.open(map, yelpMarker);
-                        });
-                        
+
                     }
-
-
-
+                    places.forEach(place => {
+                        google.maps.event.addListener(place.yelpMarker, 'click', function () {
+                            infowindow.open(map, place.yelpMarker);
+                        });
+                    })
                 }
                 initMap();
             });
