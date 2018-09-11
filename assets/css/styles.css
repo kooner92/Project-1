@@ -36,3 +36,15 @@ h6 span {
     max-width: 100%;
     max-height: auto;
 }
+.popup-overlay {
+    visibility:hidden;
+}
+.popup-content {
+    visibility:hidden;
+}
+.popup-overlay.active{
+    visibility:visible;
+}        
+.popup-content.active {
+    visibility:visible;
+}
