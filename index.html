@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Kalam:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/materialize.css" media="screen,projection">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
@@ -17,11 +16,7 @@
 
     <nav class="indigo lighten-2 container">
         <div class="nav-wrapper">
-            <a id="logo-container" href="#" class="brand-logo">Meet Me Halfway</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <h4>Meet Me Halfway</h4>
         </div>
     </nav>
 
@@ -30,12 +25,12 @@
             <form class="col s12 grey lighten-2">
                 <div class="row">
                     <br>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 m6">
                         <i class="material-icons prefix">location_on</i>
                         <input placeholder="42 Wallaby Way" id="address1" type="text" class="validate">
                         <label for="address1">1st Location</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 m6">
                         <i class="material-icons prefix">location_on</i>
                         <input placeholder="123 Sesame Street" id="address2" type="text" class="validate">
                         <label for="address2">2nd Location</label>
@@ -49,12 +44,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s3">
+                    <div class="col s6 m3">
                         <p>Price</p>
                         <p>
                             <label>
                                 <input class="with-gap" name="price" value="" type="radio" checked />
-                                <span>none</span>
+                                <span>None</span>
                             </label>
                         </p>
                         <p>
@@ -82,12 +77,12 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s3">
+                    <div class="col s6 col m3">
                         <p>Radius</p>
                         <p>
                             <label>
                                 <input class="with-gap" name="radius" value="" type="radio" checked />
-                                <span>none</span>
+                                <span>None</span>
                             </label>
                         </p>
                         <p>
@@ -115,7 +110,7 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s3">
+                    <div class="col s6 m3">
                         <p>Sort by</p>
                         <p>
                             <label>
@@ -142,7 +137,7 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s3">
+                    <div class="col s6 m3">
                         <p>Advanced Search</p>
                         <p>
                             <label>
@@ -180,10 +175,10 @@
             </form>
         </div>
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 m6">
                 <div id="map"></div>
             </div>
-            <div class="col s6">
+            <div class="col s12 m6">
                 <div class="carousel"></div>
             </div>
         </div>

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("form").on("submit", function (event) {
 
-        $("#yelp-results").empty();
+        $(".carousel").empty();
         $(".modal").modal();
         event.preventDefault();
 
@@ -86,7 +86,7 @@ $(document).ready(function () {
                         var carouselItem = $("<div>");
                         carouselItem.addClass("carousel-item");
                         var resultDiv = $("<div>");
-                        resultDiv.attr("id", "result" + resultNumber).addClass("card result");
+                        resultDiv.attr("id", "result" + resultNumber).addClass("card result"); // why need result class?
                         var imageDiv = $("<div>");
                         imageDiv.addClass("card-image");
                         var resultImage = $("<img>");

@@ -4884,8 +4884,9 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+  padding: 10px;
   border-radius: 0 0 2px 2px;
+  margin-top: -15px;
 }
 
 .card .card-content p {
@@ -4906,7 +4907,7 @@ small {
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   position: relative;
-  padding: 16px 24px;
+  padding: 10px;
 }
 
 .card .card-action:last-child {
