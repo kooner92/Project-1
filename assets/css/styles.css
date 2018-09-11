@@ -19,11 +19,11 @@ h6 span {
 img {
     height: 210px;
 }
-div.carousel-item.active {
-    transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
+div #address1-error.error {
+    padding-left: 43px;
 }
-div.carousel-item {
-    transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
+div #address2-error.error {
+    padding-left: 43px;
 }
 .nav-wrapper {
     margin-top: 20px;
