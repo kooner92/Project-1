@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    $("#address1").val(localStorage.getItem("address1"));
+    $("#address2").val(localStorage.getItem("address2"));
+
     $("#reg-form").validate({
         rules: {
             add: {
@@ -21,13 +24,17 @@ $(document).ready(function () {
             }
         }
     });
+
     $("form").on("submit", function (event) {
 
         $(".carousel").empty();
         $(".modal").modal();
         event.preventDefault();
-        var address1 = $("#address1").val();
-        var address2 = $("#address2").val();
+        var address1 = $("#address1").val().trim();
+        var address2 = $("#address2").val().trim();
+        localStorage.setItem("address1", address1);
+        localStorage.setItem("address2", address2);
+
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
         var proxy = "https://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
