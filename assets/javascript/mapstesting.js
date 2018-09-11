@@ -34,8 +34,8 @@ $(document).ready(function () {
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
         $("#loadingModal").modal({
             dismissible: false
-         });
-         $("#loadingModal").modal("open");
+        });
+        $("#loadingModal").modal("open");
 
         if (address1 !== "" && address2 !== "") {
             $.ajax({
@@ -43,40 +43,9 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-
-
-
-                var latitude1 = response.routes[0].legs[0].start_location.lat;
-                var longitude1 = response.routes[0].legs[0].start_location.lng;
-                var latitude2 = response.routes[0].legs[0].end_location.lat;
-                var longitude2 = response.routes[0].legs[0].end_location.lng;
-                var midLongitude = "&longitude=" + ((longitude1 + longitude2) / 2);
-                var midLatitude = "&latitude=" + ((latitude1 + latitude2) / 2);
-                var term = "";
-                var price = $("input[name='price']:checked").val();
-                var radius = $("input[name='radius']:checked").val();
-                var sortBy = $("input[name='sortBy']:checked").val();
-                var open = "";
-                var yelpAttributes = [];
-                var advanceSearch = "";
-
-                if ($("#term").val() !== "") {
-                    term = "&term=" + $("#term").val();
-                }
-                if ($("input[id='openNow']:checked").val() !== undefined) {
-                    open = $("input[id='openNow']:checked").val();
-                }
-                if ($("input[id='hotNew']:checked").val() !== undefined) {
-                    yelpAttributes.push($("input[id='hotNew']:checked").val());
-                }
-                if ($("input[id='reservation']:checked").val() !== undefined) {
-                    yelpAttributes.push($("input[id='reservation']:checked").val());
-                }
-                if ($("input[id='deals']:checked").val() !== undefined) {
-                    yelpAttributes.push($("input[id='deals']:checked").val());
-                }
-                if (yelpAttributes !== undefined) {
-                    advanceSearch = "&attributes=" + yelpAttributes.toString();
+                if (response.status === "NOT_FOUND") {
+                    $("#loadingModal").modal("close");
+                    $("#modal2").modal("open");
                 }
                 else {
                     var latitude1 = response.routes[0].legs[0].start_location.lat;
@@ -110,6 +79,40 @@ $(document).ready(function () {
                     }
                     if (yelpAttributes !== undefined) {
                         advanceSearch = "&attributes=" + yelpAttributes.toString();
+                    }
+                    else {
+                        var latitude1 = response.routes[0].legs[0].start_location.lat;
+                        var longitude1 = response.routes[0].legs[0].start_location.lng;
+                        var latitude2 = response.routes[0].legs[0].end_location.lat;
+                        var longitude2 = response.routes[0].legs[0].end_location.lng;
+                        var midLongitude = "&longitude=" + ((longitude1 + longitude2) / 2);
+                        var midLatitude = "&latitude=" + ((latitude1 + latitude2) / 2);
+                        var term = "";
+                        var price = $("input[name='price']:checked").val();
+                        var radius = $("input[name='radius']:checked").val();
+                        var sortBy = $("input[name='sortBy']:checked").val();
+                        var open = "";
+                        var yelpAttributes = [];
+                        var advanceSearch = "";
+
+                        if ($("#term").val() !== "") {
+                            term = "&term=" + $("#term").val();
+                        }
+                        if ($("input[id='openNow']:checked").val() !== undefined) {
+                            open = $("input[id='openNow']:checked").val();
+                        }
+                        if ($("input[id='hotNew']:checked").val() !== undefined) {
+                            yelpAttributes.push($("input[id='hotNew']:checked").val());
+                        }
+                        if ($("input[id='reservation']:checked").val() !== undefined) {
+                            yelpAttributes.push($("input[id='reservation']:checked").val());
+                        }
+                        if ($("input[id='deals']:checked").val() !== undefined) {
+                            yelpAttributes.push($("input[id='deals']:checked").val());
+                        }
+                        if (yelpAttributes !== undefined) {
+                            advanceSearch = "&attributes=" + yelpAttributes.toString();
+                        }
                     }
                 }
                 $.ajax({
