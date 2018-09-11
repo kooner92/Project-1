@@ -28,6 +28,7 @@ $(document).ready(function () {
     $("form").on("submit", function (event) {
 
         $(".carousel").empty();
+        $(".modal").modal();
         event.preventDefault();
         var address1 = $("#address1").val().trim();
         var address2 = $("#address2").val().trim();
@@ -37,10 +38,13 @@ $(document).ready(function () {
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
         var proxy = "https://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
+        
         $("#loadingModal").modal({
             dismissible: false
-        });
-        $("#loadingModal").modal("open");
+         });
+         if (address1 !== "" && address2 !== "") {
+         $("#loadingModal").modal("open");
+         };
 
         if (address1 !== "" && address2 !== "") {
             $.ajax({
