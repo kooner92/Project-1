@@ -77,7 +77,7 @@ $(document).ready(function () {
 
                     console.log(response);
                     if (response.businesses.length === 0) {
-                        alert("no businesses in this search area");
+                        $("#modal1").modal("open");                        
                     }
                     else {
                         var array = [];
