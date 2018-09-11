@@ -3,6 +3,21 @@ body {
     margin: auto auto;
     background-size: cover;
     opacity: .9;
+    min-width: 300px;
+}
+h1 {
+    text-align: center;
+}
+h4 {
+    padding-top: 12px;
+    margin-left: 10px;
+}
+h6 span {
+    background-color: black;
+    color: white;
+}
+img {
+    height: 210px;
 }
 div.carousel-item.active {
     transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
@@ -10,31 +25,12 @@ div.carousel-item.active {
 div.carousel-item {
     transform: translateX(71px) translateY(0px) translateX(0px) translateX(0px) translateZ(0px);
 }
-h1 {
-    text-align: center;
-}
-h6 span {
-    background-color: black;
-    color: white;
-}
 .nav-wrapper {
     margin-top: 20px;
     font-family: 'Bree Serif', serif;
 }
 .container {
     margin-top: 10px;
-}
-#logo-container {
-    margin-left: 30px;
-}
-#map {
-    height: 400px;  
-    width: 100%;  
-    margin-top: 8px;
-}
-#resultImage {
-    max-width: 100%;
-    max-height: auto;
 }
 .popup-overlay {
     visibility:hidden;
@@ -47,4 +43,19 @@ h6 span {
 }        
 .popup-content.active {
     visibility:visible;
+}
+.carousel {
+    margin-top: -200px;
+}
+#logo-container {
+    margin-left: 30px;
+}
+#map {
+    height: 400px;  
+    width: 100%;  
+    margin-top: 8px;
+}
+#resultImage {
+    max-width: 100%;
+    max-height: auto;
 }

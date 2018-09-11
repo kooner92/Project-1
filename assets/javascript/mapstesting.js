@@ -22,7 +22,8 @@ $(document).ready(function () {
         }
     });
     $("form").on("submit", function (event) {
-        $("#yelp-results").empty();
+
+        $(".carousel").empty();
         $(".modal").modal();
         event.preventDefault();
         var address1 = $("#address1").val();
@@ -77,7 +78,7 @@ $(document).ready(function () {
 
                     console.log(response);
                     if (response.businesses.length === 0) {
-                        $("#modal1").modal("open");                        
+                        $("#modal1").modal("open");
                     }
                     else {
                         var array = [];
@@ -101,8 +102,6 @@ $(document).ready(function () {
                             var link = array[i].placeUrl;
                             var phone = array[i].placePhone;
                             var location = array[i].placeLocation;
-
-
 
                             var carouselItem = $("<div>");
                             carouselItem.addClass("carousel-item");
@@ -189,7 +188,6 @@ $(document).ready(function () {
                                 })
                             });
                         })
-
                     }
                     initMap();
                 });
