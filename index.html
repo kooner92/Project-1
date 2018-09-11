@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/materialize.css" media="screen,projection">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
@@ -16,40 +17,44 @@
 
     <nav class="indigo lighten-2 container">
         <div class="nav-wrapper">
-            <h4>Meet Me Halfway</h4>
+            <a id="logo-container" href="#" class="brand-logo">Meet Me Halfway</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
         </div>
     </nav>
 
     <div class="container">
+        <div id="loadingModal" class="modal">
+            <div class="modal-content">
+              <h5>Loading... Please Wait</h5>
+            </div>
+          </div>
         <div class="row">
             <form class="col s12 teal lighten-5" id="reg-form">
                 <div class="row">
                     <br>
-                    <div class="input-field col s12 m6">
-                        <i class="material-icons prefix">location_on</i>
-                        <input name="add" placeholder="42 Wallaby Way" id="address1" type="text" class="validate">
-                        <label for="address1">1st Location</label>
+                    <div class="input-field col s6">
+                        <input name="add" placeholder="1st Location" id="address1" type="text" class="validate">
+                        <label for="address1"></label>
                     </div>
-                    <div class="input-field col s12 m6">
-                        <i class="material-icons prefix">location_on</i>
-                        <input name="add2" placeholder="123 Sesame Street" id="address2" type="text" class="validate">
-                        <label for="address2">2nd Location</label>
+                    <div class="input-field col s6">
+                        <input name="add2" placeholder="2nd Location" id="address2" type="text" class="validate">
+                        <label for="address2"></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">location_searching</i>
                         <input placeholder="Point of Interest (optional)" id="term" type="text" class="validate">
                         <label for="POI"></label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 m3">
+                    <div class="col s3">
                         <p>Price</p>
                         <p>
                             <label>
                                 <input class="with-gap" name="price" value="" type="radio" checked />
-                                <span>None</span>
+                                <span>none</span>
                             </label>
                         </p>
                         <p>
@@ -77,12 +82,12 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s6 col m3">
+                    <div class="col s3">
                         <p>Radius</p>
                         <p>
                             <label>
                                 <input class="with-gap" name="radius" value="" type="radio" checked />
-                                <span>None</span>
+                                <span>none</span>
                             </label>
                         </p>
                         <p>
@@ -110,7 +115,7 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s6 m3">
+                    <div class="col s3">
                         <p>Sort by</p>
                         <p>
                             <label>
@@ -137,7 +142,7 @@
                             </label>
                         </p>
                     </div>
-                    <div class="col s6 m3">
+                    <div class="col s3">
                         <p>Advanced Search</p>
                         <p>
                             <label>
@@ -174,10 +179,10 @@
             </form>
         </div>
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s6">
                 <div id="map"></div>
             </div>
-            <div class="col s12 m6">
+            <div class="col s6">
                 <div class="carousel"></div>
             </div>
         </div>
@@ -190,13 +195,36 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <h4>Loading...</h4>
+        </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="assets/javascript/materialize.js"></script>
     <script src="assets/javascript/mapstesting.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 
 </body>
 

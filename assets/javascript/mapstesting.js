@@ -26,17 +26,22 @@ $(document).ready(function () {
         $(".carousel").empty();
         $(".modal").modal();
         event.preventDefault();
+
         var address1 = $("#address1").val();
         var address2 = $("#address2").val();
         var apiKey = "AIzaSyDMm86-L51560jHqvvQ46cAZGTyOtYvlT4";
         var proxy = "https://cors-anywhere.herokuapp.com/";
         var queryURL = `${proxy}https://maps.googleapis.com/maps/api/directions/json?origin=${address1}&destination=${address2}&key=${apiKey}`;
+        $("#loadingModal").modal("open");
         if (address1 !== "" && address2 !== "") {
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
+
+
+                
                 var latitude1 = response.routes[0].legs[0].start_location.lat;
                 var longitude1 = response.routes[0].legs[0].start_location.lng;
                 var latitude2 = response.routes[0].legs[0].end_location.lat;
@@ -79,6 +84,7 @@ $(document).ready(function () {
                     console.log(response);
                     if (response.businesses.length === 0) {
                         $("#modal1").modal("open");
+                        $("#loadingModal").modal("close");
                     }
                     else {
                         var array = [];
@@ -131,6 +137,9 @@ $(document).ready(function () {
                             $(".carousel").append(carouselItem);
                         };
                         $('.carousel').carousel();
+                        $("#loadingModal").modal("close");
+
+
                     }
                     function initMap() {
                         var pointMid = {};

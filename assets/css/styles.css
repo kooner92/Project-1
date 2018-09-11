@@ -32,18 +32,7 @@ div #address2-error.error {
 .container {
     margin-top: 10px;
 }
-.popup-overlay {
-    visibility:hidden;
-}
-.popup-content {
-    visibility:hidden;
-}
-.popup-overlay.active{
-    visibility:visible;
-}        
-.popup-content.active {
-    visibility:visible;
-}
+
 .carousel {
     margin-top: -200px;
 }
