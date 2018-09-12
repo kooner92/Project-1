@@ -28,6 +28,8 @@ div #address2-error.error {
 .nav-wrapper {
     margin-top: 20px;
     font-family: 'Bree Serif', serif;
+    font-size: 30px;
+    margin-left: 15px;
 }
 .container {
     margin-top: 10px;
@@ -35,9 +37,6 @@ div #address2-error.error {
 
 .carousel {
     margin-top: -200px;
-}
-#logo-container {
-    margin-left: 30px;
 }
 #map {
     height: 400px;  
