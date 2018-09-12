@@ -17,16 +17,16 @@
 
     <nav class="indigo lighten-2 container">
         <div class="nav-wrapper">
-           Meet Me Halfway
+            Meet Me Halfway
         </div>
     </nav>
 
     <div class="container">
         <div id="loadingModal" class="modal">
             <div class="modal-content">
-              <h5>Loading... Please Wait</h5>
+                <h5>Loading... Please Wait</h5>
             </div>
-          </div>
+        </div>
         <div class="row">
             <form class="col s12 grey lighten-2" id="reg-form">
                 <div class="row">
@@ -47,6 +47,23 @@
                         <i class="material-icons prefix">location_on</i>
                         <input placeholder="Point of Interest (optional)" id="term" type="text" class="validate">
                         <label for="POI"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p>Setting</p>
+                        <p>
+                            <label>
+                                <input class="gpsSetting with-gap" name="distance" value="equiDistance" type="radio" checked />
+                                <span>Equal Distance</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="gpsSetting with-gap" name="distance" value="equiTime" type="radio" />
+                                <span>Equal Driving Time</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
                 <div class="row">
